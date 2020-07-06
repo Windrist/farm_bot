@@ -1,0 +1,21 @@
+<launch>
+    <!-- Connect to MPU6050 and get imu data -->
+    <!-- <node pkg="mpu6050" type="imu" name="imu" required="true">
+        <param name="port" value="/dev/ttyACM0" />
+    </node> -->
+
+    <!-- Filter and fuse raw imu data -->
+    <!-- <node pkg="imu_filter_madgwick" type="imu_filter_node" name="imu_filter_madgwick" output="screen" respawn="false" >
+        <param name="fixed_frame" value="base_link" />
+        <param name="use_mag" value="true" />
+        <param name="publish_tf" value="false" />
+        <param name="use_magnetic_field_msg" value="true" /> 
+        <param name="world_frame" value="enu" />
+        <param name="orientation_stddev" value="0.95" />
+    </node> -->
+
+        
+    <!-- Publish static transform from base_footprint to imu_link -->
+    <node pkg="tf" type="static_transform_publisher" name="base_link_to_imu_link" args="0 0 0 0 0 0  /base_link /imu_link  100"/>
+    <!-- <node pkg="tf" type="static_transform_publisher" name="imu_transform" args="0 0 0 0 0 0 /base_link /imu_link 100"  /> -->
+</launch>

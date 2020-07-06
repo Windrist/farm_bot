@@ -1,0 +1,8 @@
+<launch>
+    <!-- Map server -->
+    <arg name="map_file" default="$(find ekf)/maps/test.yaml"/>
+    <node pkg="map_server" name="map_server"  type="map_server" args="$(arg map_file)" />
+    
+    <!-- Calls navigation stack packages -->
+    <include file="$(find ekf)/launch/include/navigation/move_base.launch" />
+</launch>

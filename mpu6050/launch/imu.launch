@@ -1,0 +1,9 @@
+<launch>
+  <node pkg="mpu6050" type="imu" name="imu" required="true">
+    <param name="port" value="/dev/ttyACM0" />
+  </node>
+
+  <!-- <node pkg="rviz" type="rviz" name="rviz" args="-d $(find mpu6050)/rviz/demo.rviz" required="true"/> -->
+  <node pkg="tf" type="static_transform_publisher" name="imu_transform" args="0 0 0 0 0 0 base_link imu_link 100"  />
+
+</launch>
